@@ -19,8 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
 cookie_T = 'COOKIE_T_DATA_GOES_HERE'
-cookie_Y = 'COOKIE_Y_DATA_GOES_HERE'
-
+cookie_Y = 'COOKIE_Y_DATA_GOES_HERE'            
 import json #required for reading various JSON attributes from the content
 import requests #required for fetching the raw messages
 import os #required for checking if a file exists locally
@@ -73,7 +72,6 @@ def archive_group(groupName, mode="update"):
 				msgsArchived = msgsArchived + 1
 	
 	log("Archive finished, archived " + str(msgsArchived) + ", time taken is " + str(time.time() - startTime) + " seconds", groupName)
-		
 
 def group_messages_max(groupName):
 	s = requests.Session()
@@ -109,7 +107,7 @@ def archive_message(groupName, msgNumber, depth=0):
 				log("Archive halted - it appears Yahoo has blocked you.", groupName)
 				log("Check if you can access the group's homepage from your browser. If you can't, you have been blocked.", groupName)
 				log("Don't worry, in a few hours (normally less than 3) you'll be unblocked and you can run this script again - it'll continue where you left off." ,groupName)
-				sys.exit()
+				#sys.exit()
 			log("Failed to retrive message " + str(msgNumber) + " due to HTTP status code " + str(resp.status_code), groupName )
 			failed = True
 	

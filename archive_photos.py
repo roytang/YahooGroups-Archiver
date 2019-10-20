@@ -36,7 +36,7 @@ def import_photos(photo_export_filepath, output_path):
             a2 = div2.findAll("a")[0]
             url = a2["href"]
             download_to = save_location / (photo_id + ".jpg") # yes, we are assuming jpg
-            resp = requests.get(url)
+            resp = requests.get(url, headers={'Referer': 'https://groups.yahoo.com/'})
             with download_to.open("wb") as f:
                 f.write(resp.content)
             count = count + 1
@@ -47,3 +47,4 @@ def import_photos(photo_export_filepath, output_path):
 # Then save the HTML file somewhere on your computer
 # Then edit below line and uncomment and run the script
 #import_photos("<downloaded HTML file>", "<export location>")
+
